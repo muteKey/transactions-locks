@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+
+  perconadb:
+    image: percona
+    restart: always
+    container_name: percona
+    environment:
+      - MYSQL_DATABASE=${DATABASE}
+      - MYSQL_ROOT_PASSWORD=${ROOT_PASSWORD}
+      - MYSQL_USER=${USER}
+      - MYSQL_PASSWORD=${PASSWORD}
+    volumes:
+      - ./percona/data:/docker-entrypoint-initdb.d
+      - ./percona/scripts:/var/db
+  
+
+  # postgresdb:
+  #   image: postgres
+  #   restart: always
+  #   environment:
+  #     POSTGRES_PASSWORD: example
+
