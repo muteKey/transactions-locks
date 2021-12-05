@@ -31,6 +31,7 @@ START TRANSACTION;
 SELECT * from users;
 COMMIT;
 ```
+![Dirty read](https://github.com/muteKey/transactions-locks/blob/master/images/Dirty%20Read.png)
 
 # LOST UPDATE
 
@@ -60,6 +61,7 @@ SELECT SLEEP(5);
 UPDATE users SET age=age - 20 where email='brad.gibson@example.com';
 COMMIT;
 ```
+![Lost update](https://github.com/muteKey/transactions-locks/blob/master/images/Lost%20Update%20(Serializable).png)
 
 # PHANTOM READ
 
@@ -81,6 +83,7 @@ START TRANSACTION;
 INSERT INTO users (name,email,gender,age) VALUES ('Jen Cole', 'jen.cole@example.com', 'f', 100);
 COMMIT;
 ```
+![Phantom Read](https://github.com/muteKey/transactions-locks/blob/master/images/Phantom%20Read%20-%20%5BREAD%20COMMITTED%5D.png)
 
 # NON REPEATABLE READ
 
@@ -104,6 +107,5 @@ START TRANSACTION;
 UPDATE users SET name='Tommy Vercetti' WHERE email='nicole.burton@example.com';
 COMMIT;
 ```
-
-
+![Non Repeatable Read](https://github.com/muteKey/transactions-locks/blob/master/images/Non%20Repeatable%20Read%20(read%20uncommitted).png)
 
